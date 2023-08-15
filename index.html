@@ -77,7 +77,7 @@
         </div>
 
         <!-- Sección del Cotizador -->
-        <h1>Cotizador de Seguros de Autos Antiguos</h1>
+        <h1 id="titulo">Cotizador de Seguros de Autos Antiguos</h1>
 
         <form id="cotizadorForm">
             <label for="marca">Marca:</label>
@@ -110,7 +110,7 @@
             <input type='radio' id='coberturaCompleta' name='cobertura' value='todoRiesgo' required>
             <label for='todoRiesgo'>Todo Riesgo</label><br><br>
 
-            <!-- Botón para llamar a la función cotizarSeguros() -->
+            <!-- Botón para llamar a la función cotizarSeguros -->
             <button type="button" class="btn btn-primary" onclick="cotizarSeguros()">Cotizar</button>
             <div class="costo" id='resultadoCotizacion'></div>
         </form>
