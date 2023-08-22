@@ -1,14 +1,23 @@
+const d = document
+const titulo = d.querySelector('#titulo');
+titulo.style.textAlign = 'center';
+
 // Función del Cotizador de Seguros
 function cotizarSeguros() {
-    let marca = document.querySelector("#marca").value;
-    let edad = document.querySelector("#edad").value;
-    let cobertura = document.querySelector('input[name="cobertura"]:checked').value;
+    let marca = d.querySelector("#marca").value;
+    let edad = d.querySelector("#edad").value;
+    let cobertura = d.querySelector('input[name="cobertura"]:checked').value;
 
     const cotizacion = { marca, edad, cobertura };
     const resultado = cotizar(cotizacion);
 
+    // Almacena en LocalStorage y se recupera con const cotizaciones = JSON.parse(localStorage.getItem('cotizaciones')) || []; 
+    const cotizaciones = JSON.parse(localStorage.getItem('cotizaciones')) || [];
+    cotizaciones.push({ cotizacion, resultado });
+    localStorage.setItem('cotizaciones', JSON.stringify(cotizaciones));
+
     // Imprime el resultado del costo del seguro
-    document.getElementById("resultadoCotizacion").innerHTML = "El presupuesto del costo trimestral del seguro seleccionado es: $" + resultado;
+    d.getElementById("resultadoCotizacion").innerHTML = "El presupuesto del costo trimestral del seguro seleccionado es: $" + resultado;
 }
 
 // Cálculo de Cotización desde un costo base y sus opciones
@@ -25,7 +34,7 @@ function cotizar(cotizacion) {
     return resultado;
 }
 
-// Cálculo Cobertura Contra Terceros o Todo Riesgo por defecto
+// Cálculo Cobertura con Operador Ternario
 function obtenerCobertura(cobertura) {
     return (cobertura === 'contraTerceros') ? 1.40 : 1.80;
 }
@@ -46,3 +55,11 @@ function calcularMarca(marca) {
 function diferencia(edad) {
     return new Date().getFullYear() - edad;
 }
+
+// Footer del HTML
+const footer = d.createElement('footer');
+const anio = new Date().getFullYear();
+footer.innerHTML = `<a>© ${anio} Sancor Seguros S.A.</a>`;
+d.body.appendChild(footer);
+footer.style.textAlign = 'center';
+footer.style.fontSize = '25px';
