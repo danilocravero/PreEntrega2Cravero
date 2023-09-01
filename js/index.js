@@ -16,6 +16,14 @@ function cotizarSeguros() {
     cotizaciones.push({ cotizacion, resultado });
     localStorage.setItem('cotizaciones', JSON.stringify(cotizaciones));
 
+    // Ventana Sweet Alert que imprime el resultado
+    Swal.fire({
+        title: 'El presupuesto del costo trimestral del seguro seleccionado es:',
+        text: `$${resultado}`,
+        icon: 'success',
+        confirmButtonText: 'Ok'
+    });
+    
     // Imprime el resultado del costo del seguro
     d.getElementById("resultadoCotizacion").innerHTML = "El presupuesto del costo trimestral del seguro seleccionado es: $" + resultado;
 }

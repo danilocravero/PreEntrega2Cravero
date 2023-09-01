@@ -1,0 +1,12 @@
+{
+  "name": "cotizador",
+  "version": "1.0.0",
+  "description": "Cotizador de Seguros de Danilo Cravero",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Danilo Cravero",
+  "license": "ISC"
+}
